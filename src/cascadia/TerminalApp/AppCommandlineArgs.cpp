@@ -226,6 +226,8 @@ void AppCommandlineArgs::_buildNewTabParser()
     auto setupSubcommand = [this](auto& subcommand) {
         _addNewTerminalArgs(subcommand);
 
+  
+
         // When ParseCommand is called, if this subcommand was provided, this
         // callback function will be triggered on the same thread. We can be sure
         // that `this` will still be safe - this function just lets us know this
@@ -274,6 +276,7 @@ void AppCommandlineArgs::_buildSplitPaneParser()
         subcommand._duplicateOption = subcommand.subcommand->add_flag("-D,--duplicate",
                                                                       _splitDuplicate,
                                                                       RS_A(L"CmdSplitPaneDuplicateArgDesc"));
+
         sizeOpt->check(CLI::Range(0.01f, 0.99f));
 
         // When ParseCommand is called, if this subcommand was provided, this
@@ -559,6 +562,12 @@ void AppCommandlineArgs::_addNewTerminalArgs(AppCommandlineArgs::NewTerminalSubc
     subcommand.tabColorOption = subcommand.subcommand->add_option("--tabColor",
                                                                   _startingTabColor,
                                                                   RS_A(L"CmdTabColorArgDesc"));
+
+    subcommand.tabPositionOption = subcommand.subcommand->add_flag("-tP,--tabPosition",
+                                                                    _tabPosition,
+                                                                    RS_A(L"CmdTabPositionDesc"));
+
+
 
     subcommand.suppressApplicationTitleOption = subcommand.subcommand->add_flag(
         "--suppressApplicationTitle,!--useApplicationTitle",
@@ -970,6 +979,11 @@ std::optional<winrt::Microsoft::Terminal::Settings::Model::LaunchMode> AppComman
 std::optional<winrt::Microsoft::Terminal::Settings::Model::LaunchPosition> AppCommandlineArgs::GetPosition() const noexcept
 {
     return _position;
+}
+
+std::optional<uint32_t> AppCommandlineArgs::GetTabPosition() const noexcept
+{
+    return _tabPosition;
 }
 
 std::optional<til::size> AppCommandlineArgs::GetSize() const noexcept

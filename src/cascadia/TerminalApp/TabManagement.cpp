@@ -100,8 +100,15 @@ namespace winrt::TerminalApp::implementation
     {
         newTabImpl->Initialize();
 
+        ::TerminalApp::AppCommandlineArgs _appArgs;
+
+        if (_appArgs.GetTabPosition().has_value())
+        {
+            insertPosition = _appArgs.GetTabPosition().value();
+        }
+          
         // If insert position is not passed, calculate it
-        if (insertPosition == -1)
+        if (insertPosition == -1 || insertPosition > _tabs.Size())
         {
             insertPosition = _tabs.Size();
             if (_settings.GlobalSettings().NewTabPosition() == NewTabPosition::AfterCurrentTab)

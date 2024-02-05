@@ -416,6 +416,9 @@
   <data name="CmdPositionDesc" xml:space="preserve">
     <value>Specify the position for the terminal, in "x,y" format.</value>
   </data>
+  <data name="CmdTabPositionDesc" xml:space="preserve">
+    <value>Specify the new tab position</value>
+  </data>
   <data name="CmdSizeDesc" xml:space="preserve">
     <value>Specify the number of columns and rows for the terminal, in "c,r" format.</value>
   </data>

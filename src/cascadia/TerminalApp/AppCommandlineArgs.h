@@ -42,6 +42,7 @@ public:
     std::optional<uint32_t> GetPersistedLayoutIdx() const noexcept;
     std::optional<winrt::Microsoft::Terminal::Settings::Model::LaunchMode> GetLaunchMode() const noexcept;
     std::optional<winrt::Microsoft::Terminal::Settings::Model::LaunchPosition> GetPosition() const noexcept;
+    std::optional<uint32_t> GetTabPosition() const noexcept;
     std::optional<til::size> GetSize() const noexcept;
 
     int ParseArgs(const winrt::Microsoft::Terminal::Settings::Model::ExecuteCommandlineArgs& args);
@@ -69,6 +70,8 @@ private:
         CLI::Option* colorSchemeOption;
         CLI::Option* appendCommandLineOption;
         CLI::Option* inheritEnvOption;
+        CLI::Option* tabPositionOption;
+        
     };
 
     struct NewPaneSubcommand : public NewTerminalSubcommand
@@ -76,6 +79,7 @@ private:
         CLI::Option* _horizontalOption;
         CLI::Option* _verticalOption;
         CLI::Option* _duplicateOption;
+        
     };
 
     // --- Subcommands ---
@@ -100,6 +104,7 @@ private:
     std::string _startingTitle;
     std::string _startingTabColor;
     std::string _startingColorScheme;
+    int _tabPosition{ -1 };
     bool _suppressApplicationTitle{ false };
     bool _inheritEnvironment{ false };
 
