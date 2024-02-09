@@ -563,7 +563,7 @@ void AppCommandlineArgs::_addNewTerminalArgs(AppCommandlineArgs::NewTerminalSubc
                                                                   _startingTabColor,
                                                                   RS_A(L"CmdTabColorArgDesc"));
 
-    subcommand.tabPositionOption = subcommand.subcommand->add_flag("-tP,--tabPosition",
+    subcommand.tabPositionOption = subcommand.subcommand->add_option("--tabPosition",
                                                                     _tabPosition,
                                                                     RS_A(L"CmdTabPositionDesc"));
 
