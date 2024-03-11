@@ -144,7 +144,7 @@ namespace winrt::Microsoft::Terminal::Settings::Model::implementation
             }
             if (newTerminalArgs.TabPosition() != -1)
             {
-                defaultSettings.NewTabPosition(newTerminalArgs.TabPosition().Value());
+                defaultSettings.TabPosition(newTerminalArgs.TabPosition().Value());
             }
             if (!newTerminalArgs.TabTitle().empty())
             {

@@ -315,7 +315,7 @@ namespace winrt::Microsoft::Terminal::Settings::Model::implementation
         ACTION_ARG(Windows::Foundation::IReference<bool>, Elevate, nullptr);
         ACTION_ARG(Windows::Foundation::IReference<bool>, ReloadEnvironmentVariables, nullptr);
         ACTION_ARG(uint64_t, ContentId);
-        ACTION_ARG(Windows::Foundation::IReference<int>, NewTabPosition, nullptr);
+        ACTION_ARG(Windows::Foundation::IReference<int>, TabPosition, nullptr);
 
         static constexpr std::string_view CommandlineKey{ "commandline" };
         static constexpr std::string_view StartingDirectoryKey{ "startingDirectory" };
@@ -351,7 +351,7 @@ namespace winrt::Microsoft::Terminal::Settings::Model::implementation
                        otherAsUs->_ColorScheme == _ColorScheme &&
                        otherAsUs->_Elevate == _Elevate &&
                        otherAsUs->_ReloadEnvironmentVariables == _ReloadEnvironmentVariables &&
-                       otherAsUs->_NewTabPosition == _NewTabPosition &&
+                       otherAsUs->_TabPosition == _TabPosition &&
                        otherAsUs->_ContentId == _ContentId;
 
             }
@@ -371,7 +371,7 @@ namespace winrt::Microsoft::Terminal::Settings::Model::implementation
             JsonUtils::GetValueForKey(json, ColorSchemeKey, args->_ColorScheme);
             JsonUtils::GetValueForKey(json, ElevateKey, args->_Elevate);
             JsonUtils::GetValueForKey(json, ReloadEnvironmentVariablesKey, args->_ReloadEnvironmentVariables);
-            JsonUtils::GetValueForKey(json, TabPositionKey, args->_NewTabPosition);
+            JsonUtils::GetValueForKey(json, TabPositionKey, args->_TabPosition);
             JsonUtils::GetValueForKey(json, ContentKey, args->_ContentId);
             return *args;
         }
@@ -409,7 +409,7 @@ namespace winrt::Microsoft::Terminal::Settings::Model::implementation
             copy->_ColorScheme = _ColorScheme;
             copy->_Elevate = _Elevate;
             copy->_ReloadEnvironmentVariables = _ReloadEnvironmentVariables;
-            copy->_NewTabPosition = _NewTabPosition;
+            copy->_TabPosition = _TabPosition;
             copy->_ContentId = _ContentId;
             return *copy;
         }
@@ -431,7 +431,7 @@ namespace winrt::Microsoft::Terminal::Settings::Model::implementation
             h.write(ColorScheme());
             h.write(Elevate());
             h.write(ReloadEnvironmentVariables());
-            h.write(NewTabPosition());
+            h.write(TabPosition());
             h.write(ContentId());
         }
     };

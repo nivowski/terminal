@@ -676,7 +676,10 @@ NewTerminalArgs AppCommandlineArgs::_getNewTerminalArgs(AppCommandlineArgs::NewT
     {
         args.AppendCommandLine(_appendCommandLineOption);
     }
-
+    if (*subcommand.tabPositionOption)
+    {
+        args.NewTabPosition(_tabPosition);
+    }
     bool inheritEnv = hasCommandline;
     if (*subcommand.inheritEnvOption)
     {
