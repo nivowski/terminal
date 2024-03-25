@@ -142,9 +142,9 @@ namespace winrt::Microsoft::Terminal::Settings::Model::implementation
             {
                 defaultSettings.StartingDirectory(newTerminalArgs.StartingDirectory());
             }
-            if (newTerminalArgs.TabPosition() != -1)
+            if (!newTerminalArgs.TabPosition().empty())
             {
-                defaultSettings.TabPosition(newTerminalArgs.TabPosition().Value());
+                defaultSettings.TabPosition(newTerminalArgs.TabPosition());
             }
             if (!newTerminalArgs.TabTitle().empty())
             {
